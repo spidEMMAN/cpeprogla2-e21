@@ -1,6 +1,6 @@
-//despi
 #include <iostream>
 #include<unistd.h>
+#include<iomanip>
 using namespace std;
 
 struct Name{
@@ -11,7 +11,7 @@ struct Name{
 struct Item{
        int id[9];
       char name[20];
-      int price[9];       
+      double price[9];       
 };
 struct Date{
 	int day;
@@ -31,10 +31,13 @@ struct Custom{
 
 
 int main(){
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
 	int itms[3];
     Custom custom[3];
-    
-    
+    int x;
+    double d=0;
     for (int w=0;w<3;w++){
 	cout << "CUSTOMER INFORMATION " << w+1 << ":" << endl;
 	if(w==1 || w==2)
@@ -72,15 +75,21 @@ int main(){
     cout<<"****************************************\n***************************************"<< endl;
 	}
 		cout<< "SUMMARY REPORT: \n";
-		cout<< "#" << "					CUSTOMER	NAME		ORDER DATE					ITEMS			PRICE				QUANTITY"<<endl;
-		for (int w=0;w<3;w++){
-		cout<< "1" << "					"<< custom[w].name.lastName<<"		"<<custom[w].order.date.day<<custom[w].order.date.month<<custom[w].order.date.year<<endl;
-		
-	
-	
+		cout<< "#" << setw(20)<<"COSTUMER NAME"<<setw(20)<<"ORDER DATE"<<setw(20)<<"ITEM"<<setw(20)<<"PRICE"<<setw(20)<<"QUANTITY"<<endl;
+	for (int w=0;w<3;w++){
+		cout<< w+1 <<setw(10)<< custom[w].name.lastName<<custom[w].name.firstName<<setw(25)<<custom[w].order.date.day<<"/"<<custom[w].order.date.month<<"/"<<custom[w].order.date.year<<endl;
+	for(int i=0; i<3; i++){
+		cout<<setw(55) <<custom[w].order.item.name<<setw(30)<<custom[w].order.item.price[i]<<setw(30)<<custom[w].order.quantity<<endl;
+ 		x=custom[w].order.item.price[i] * custom[w].order.quantity;
+	 	d+=x;
+
+	}
+	cout <<setw(80)<< "TOTAL PRICE: "   << d << endl <<endl;
+	d=0;
+	x=0;
+	}
 	
 	
 	system("pause");
 }
   
-
