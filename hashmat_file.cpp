@@ -16,7 +16,7 @@ void dot()
 }
  int main() 
  {
- ifstream emman("punyeta.txt");
+ ifstream emman("input.txt");
  	int super1,super2,super3;	
  	
  	cout<< "HASHMAT WARRIORS BATTLE LOADING";
@@ -30,9 +30,3 @@ void dot()
 	cout<< super3<<endl;	
 } 
 }
-
-
-
-
-
-
